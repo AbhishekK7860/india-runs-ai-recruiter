@@ -1,3 +1,15 @@
+---
+title: Redrob AI Recruiter — Offline Ranking Demo
+emoji: 🏆
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: "4.0.0"
+app_file: app.py
+pinned: true
+license: mit
+---
+
 # 🏆 India Runs AI Recruiter
 
 > **Redrob "India Runs Data & AI Challenge" — Official Hackathon Submission**
@@ -261,7 +273,9 @@ The sandbox wraps `scripts/rank.py` exactly and exposes:
 - Top-10 candidates table
 - Download links for `submission.csv` and `submission.xml`
 
-> See [README_SANDBOX.md](README_SANDBOX.md) for Hugging Face Space deployment instructions.
+> **Live Sandbox:** [https://huggingface.co/spaces/Abhi786020/india-runs-ai-recruiter](https://huggingface.co/spaces/Abhi786020/india-runs-ai-recruiter)
+
+**Note:** This sandbox demonstrates the offline ranking phase using precomputed production artifacts. It performs zero LLM, API, or network calls.
 
 ---
 

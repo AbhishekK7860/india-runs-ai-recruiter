@@ -22,6 +22,7 @@ import gradio as gr
 OUTPUT_DIR = Path("output")
 CHECKPOINTS_DIR = OUTPUT_DIR / "checkpoints"
 CSV_PATH = OUTPUT_DIR / "submission.csv"
+XLSX_PATH = OUTPUT_DIR / "submission.xlsx"
 XML_PATH = OUTPUT_DIR / "submission.xml"
 
 
@@ -58,6 +59,7 @@ def _run_ranking() -> tuple[str, float, float, str]:
     from backend.agents.ranking_strategy import WeightedFusionStrategy
     from backend.schemas.llm import CriticReview, EvidencePackage
     from backend.submission.csv_generator import CSVGenerator
+    from backend.submission.xlsx_generator import XLSXGenerator
     from backend.submission.xml_generator import XMLGenerator
     from backend.utils.checkpointer import Checkpointer
 
@@ -86,6 +88,11 @@ def _run_ranking() -> tuple[str, float, float, str]:
     csv_generator = CSVGenerator()
     csv_path = csv_generator.generate(ranked[:100], critic_reviews, OUTPUT_DIR)
     log_lines.append(f"✅ CSV generated: {csv_path}")
+
+    log_lines.append("📊 Generating submission.xlsx (100 rows)...")
+    xlsx_generator = XLSXGenerator()
+    xlsx_path = xlsx_generator.generate(ranked[:100], critic_reviews, OUTPUT_DIR)
+    log_lines.append(f"✅ XLSX generated: {xlsx_path}")
 
     log_lines.append("📄 Generating submission.xml (Top-50)...")
     xml_generator = XMLGenerator()
@@ -144,6 +151,12 @@ def _get_xml_content() -> str | None:
     return None
 
 
+def _get_xlsx_content() -> str | None:
+    if XLSX_PATH.exists():
+        return str(XLSX_PATH)
+    return None
+
+
 # ---------------------------------------------------------------------------
 # Gradio Event Handler
 # ---------------------------------------------------------------------------
@@ -162,13 +175,14 @@ def generate_rankings():
         memory_str = f"✅ {peak_mb:.1f} MB (< 16 GB ✓)"
 
         csv_file = _get_csv_content()
+        xlsx_file = _get_xlsx_content()
         xml_file = _get_xml_content()
 
-        return log, runtime_str, memory_str, top10_md, csv_file, xml_file
+        return log, runtime_str, memory_str, top10_md, csv_file, xlsx_file, xml_file
 
     except Exception as e:
         err_log = f"❌ Error during ranking:\n{traceback.format_exc()}"
-        return err_log, "ERROR", "ERROR", "Ranking failed", None, None
+        return err_log, "ERROR", "ERROR", "Ranking failed", None, None, None
 
 
 # ---------------------------------------------------------------------------
@@ -176,10 +190,10 @@ def generate_rankings():
 # ---------------------------------------------------------------------------
 CSS = """
 #header { text-align: center; padding: 20px 0; }
-#header h1 { font-size: 2.2em; font-weight: 700; color: #1a1a2e; }
-#header p { color: #555; font-size: 1.05em; }
-.info-box { background: #f0f7ff; border-left: 4px solid #2563eb; padding: 12px 16px; border-radius: 6px; margin: 8px 0; }
-.warn-box { background: #fff8f0; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 6px; margin: 8px 0; }
+#header h1 { font-size: 2.2em; font-weight: 700; color: var(--body-text-color); }
+#header p { color: var(--body-text-color-subdued); font-size: 1.05em; }
+.info-box { background: var(--background-fill-secondary); border-left: 4px solid var(--color-accent); padding: 12px 16px; border-radius: 6px; margin: 8px 0; }
+.warn-box { background: var(--background-fill-secondary); border-left: 4px solid var(--color-warning-text); padding: 12px 16px; border-radius: 6px; margin: 8px 0; }
 """
 
 ARCHITECTURE_INFO = """
@@ -265,12 +279,13 @@ with gr.Blocks(css=CSS, title="Redrob AI Recruiter — Offline Ranking Demo") as
                 with gr.Tab("📥 Downloads"):
                     gr.Markdown("### Download Submission Artifacts")
                     csv_out = gr.File(label="📄 submission.csv (100 candidates)", file_count="single")
+                    xlsx_out = gr.File(label="📊 submission.xlsx (100 candidates)", file_count="single")
                     xml_out = gr.File(label="📄 submission.xml (Top-50)", file_count="single")
 
     run_btn.click(
         fn=generate_rankings,
         inputs=[],
-        outputs=[log_out, runtime_out, memory_out, top10_out, csv_out, xml_out],
+        outputs=[log_out, runtime_out, memory_out, top10_out, csv_out, xlsx_out, xml_out],
         show_progress=True,
     )
 

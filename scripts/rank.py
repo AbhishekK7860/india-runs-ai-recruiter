@@ -19,6 +19,7 @@ from backend.agents.ranking_agent import RankingAgent
 from backend.agents.ranking_strategy import WeightedFusionStrategy
 from backend.schemas.llm import EvidencePackage, CriticReview
 from backend.submission.csv_generator import CSVGenerator
+from backend.submission.xlsx_generator import XLSXGenerator
 from backend.submission.xml_generator import XMLGenerator
 from backend.utils.checkpointer import Checkpointer
 from backend.utils.logger import get_logger
@@ -88,6 +89,10 @@ def main():
     csv_generator = CSVGenerator()
     csv_path = csv_generator.generate(final_100, critic_reviews, output_dir)
     
+    # Generate XLSX (Official Excel format for Redrob Portal)
+    xlsx_generator = XLSXGenerator()
+    xlsx_path = xlsx_generator.generate(final_100, critic_reviews, output_dir)
+    
     # Generate XML (Backward compatibility/existing workflow)
     # XML generator only requires the candidate dicts.
     # To ensure XML output works exactly as before, we output the Top-50 candidates only.
@@ -99,7 +104,7 @@ def main():
     
     logger.info(f"Offline ranking completed in {t_end - t_start:.4f} seconds.")
     logger.info(f"Peak memory usage: {peak_memory:.2f} MB")
-    logger.info("SUCCESS: submission.csv generated successfully.")
+    logger.info("SUCCESS: submission.csv and submission.xlsx generated successfully.")
 
 
 if __name__ == "__main__":

@@ -1,44 +1,91 @@
-# Redrob Hackathon — Submission Metadata Template
+# Redrob Hackathon — Submission Metadata
 
-team_name: "Antigravity"
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "Geeky Z"
+
 primary_contact:
-  name: "TODO"
-  email: "TODO@example.com"
-  phone: "TODO"
+  name: "Abhishek Santoshkumar Kesarwani"
+  email: "mrzubane786@gmail.com"
+  phone: "+91-7860201334"
 
 team_members:
-  - name: "TODO"
-    email: "TODO@example.com"
-    role: "AI Agent"
+  - name: "Abhishek Santoshkumar Kesarwani"
+    email: "mrzubane786@gmail.com"
+    role: "Team Lead, AI/ML Engineer"
 
-github_repo: "TODO"
-sandbox_link: "TODO"
+  - name: "Akash Kushwaha"
+    email: "akash.it.kushwaha@gmail.com"
+    role: "Software Development Support"
+
+  - name: "Prakhar Shrivastava"
+    email: "prakhar81005034@gmail.com"
+    role: "Software Development Support"
+
+  - name: "Harshit Mishra"
+    email: "mishraharshit255@gmail.com"
+    role: "Project Support"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/AbhishekK7860/india-runs-ai-recruiter"
+
+sandbox_link: "https://huggingface.co/spaces/Abhi786020/india-runs-ai-recruiter"
+
 reproduce_command: "uv run python scripts/rank.py --output-dir output"
 
+# ============================================================================
+# Compute environment
+# ============================================================================
 compute:
   platform: "Local Sandbox"
   cpu_cores: 8
   ram_gb: 16
   python_version: "3.12"
-  os: "Windows"
+  os: "Windows 11"
   uses_gpu_for_inference: false
   has_network_during_ranking: false
   pre_computation_required: true
-  pre_computation_time_minutes: 56
+  pre_computation_time_minutes: 52
 
+# ============================================================================
+# AI tools declaration
+# ============================================================================
 ai_tools_used:
+  - "ChatGPT"
+  - "Claude"
+  - "Gemini"
   - "Other"
 
 ai_usage_summary: |
-  Employed autonomous AI agents to parse requirements, score semantic matches, evaluate candidates, and synthesize final rankings using rigorous offline logic. No candidate data was exposed via network during the final offline ranking.
+  AI tools were used for architectural discussions, implementation guidance,
+  debugging, documentation refinement, code review, and development support.
+  The final ranking pipeline executes completely offline using precomputed
+  checkpoints with zero LLM inference, zero API calls, and zero network access
+  during ranking. No candidate data is transmitted during the offline ranking
+  phase.
 
+# ============================================================================
+# Approach summary
+# ============================================================================
 methodology_summary: |
-  Multi-agent system combining FAISS semantic retrieval with structured LLM evaluation. 
-  1. SemanticSearcher retrieves top 500 candidates. 
-  2. RecruiterAgent scores all 500. 
-  3. CriticAgent deeply reviews top 100. 
-  4. RankingAgent fuses scores deterministically offline.
+  A multi-agent AI recruitment system combining semantic retrieval, structured
+  LLM evaluation, deterministic score fusion, and offline reproducibility.
 
+  1. SemanticSearcher retrieves the Top-500 candidates using FAISS.
+  2. RecruiterAgent performs structured evaluation on retrieved candidates.
+  3. CriticAgent performs a deeper review of the Top-100 candidates.
+  4. RankingAgent combines all evaluation signals using a deterministic
+     WeightedFusionStrategy.
+  5. The final offline ranking pipeline loads only cached evaluation artifacts
+     and generates submission outputs without network connectivity, ensuring
+     reproducibility, explainability, and deterministic execution.
+
+# ============================================================================
+# Declarations
+# ============================================================================
 declarations:
   read_submission_spec: true
   code_is_original_work: true
