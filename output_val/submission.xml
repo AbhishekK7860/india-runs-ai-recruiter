@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<submission>
+  <candidates>
+    <candidate id="CAND_0000001" rank="1">
+      <score>63.0000</score>
+    </candidate>
+    <candidate id="CAND_0000002" rank="2">
+      <score>45.0000</score>
+    </candidate>
+    <candidate id="CAND_0000003" rank="3">
+      <score>39.0000</score>
+    </candidate>
+  </candidates>
+</submission>

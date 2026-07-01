@@ -1,0 +1,7 @@
+{
+  "dataset_hash": "de7b8cae39a9f9378a2cd4f8153bfc1f84960bce0ae520f263423d129df4b335",
+  "faiss_hash": "4fb484cc0081a6f139bb06f3693d2bd38dd30f75a658495f426eeb40a7f27ddb",
+  "prompts_hash": "78c1dc7fb156f5c021b38768f47dd5cf1db4e0d2021d326b7761cf80261564cb",
+  "provider": "openrouter",
+  "model": "google/gemma-3-27b-it"
+}

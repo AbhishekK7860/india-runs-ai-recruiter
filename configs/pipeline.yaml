@@ -1,0 +1,5 @@
+pipeline:
+  faiss_top_k: 500
+  llm_top_k: 100
+  final_top_k: 50
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"

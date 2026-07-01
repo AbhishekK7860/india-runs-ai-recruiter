@@ -1,0 +1,47 @@
+# Redrob Hackathon — Submission Metadata Template
+
+team_name: "Antigravity"
+primary_contact:
+  name: "TODO"
+  email: "TODO@example.com"
+  phone: "TODO"
+
+team_members:
+  - name: "TODO"
+    email: "TODO@example.com"
+    role: "AI Agent"
+
+github_repo: "TODO"
+sandbox_link: "TODO"
+reproduce_command: "uv run python scripts/rank.py --output-dir output"
+
+compute:
+  platform: "Local Sandbox"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.12"
+  os: "Windows"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 56
+
+ai_tools_used:
+  - "Other"
+
+ai_usage_summary: |
+  Employed autonomous AI agents to parse requirements, score semantic matches, evaluate candidates, and synthesize final rankings using rigorous offline logic. No candidate data was exposed via network during the final offline ranking.
+
+methodology_summary: |
+  Multi-agent system combining FAISS semantic retrieval with structured LLM evaluation. 
+  1. SemanticSearcher retrieves top 500 candidates. 
+  2. RecruiterAgent scores all 500. 
+  3. CriticAgent deeply reviews top 100. 
+  4. RankingAgent fuses scores deterministically offline.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: false
+  reproduction_tested: true

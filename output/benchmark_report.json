@@ -1,0 +1,11 @@
+{
+  "total_execution_time_sec": 3396.9288551000063,
+  "parsing_time_sec": 0.03626249999797437,
+  "embedding_time_sec": 7.654201199999079,
+  "retrieval_latency_sec": 0.0357164000015473,
+  "average_llm_latency_sec": 5.610629032279538,
+  "peak_memory_usage_mb": 660.59765625,
+  "cache_hit_rate": 0.0,
+  "total_candidates_processed": 500,
+  "final_shortlisted_candidates": 50
+}

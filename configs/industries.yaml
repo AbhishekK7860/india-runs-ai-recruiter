@@ -1,0 +1,16 @@
+# Canonical industries and their aliases
+canonical_industries:
+  "Technology":
+    - "IT"
+    - "Information Technology"
+    - "Software"
+  "Finance":
+    - "Banking"
+    - "FinTech"
+    - "Financial Services"
+  "Healthcare":
+    - "Medical"
+    - "HealthTech"
+  "E-commerce":
+    - "Retail"
+    - "Online Retail"

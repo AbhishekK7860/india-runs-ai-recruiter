@@ -1,0 +1,22 @@
+# Canonical job titles and their aliases
+canonical_titles:
+  "Software Engineer":
+    - "Software Developer"
+    - "Programmer"
+    - "SDE"
+  "Backend Engineer":
+    - "Backend Developer"
+    - "Software Engineer (Backend)"
+    - "Backend SDE"
+  "Frontend Engineer":
+    - "Frontend Developer"
+    - "UI Developer"
+  "Data Scientist":
+    - "DS"
+    - "Data Science Engineer"
+  "Data Engineer":
+    - "DE"
+    - "Big Data Engineer"
+  "Machine Learning Engineer":
+    - "ML Engineer"
+    - "AI Engineer"

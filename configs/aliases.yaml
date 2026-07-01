@@ -1,0 +1,14 @@
+# Alias mapping to canonical names
+skill_aliases:
+  "ML": "Machine Learning"
+  "Artificial Intelligence": "Machine Learning"
+  "AI": "Machine Learning"
+  "DL": "Deep Learning"
+  "NLP": "Natural Language Processing"
+  "K8s": "Kubernetes"
+  "JS": "JavaScript"
+  "TS": "TypeScript"
+  "Golang": "Go"
+  "Amazon Web Services": "AWS"
+  "Google Cloud Platform": "GCP"
+  "Google Cloud": "GCP"
