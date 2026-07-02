@@ -4,11 +4,11 @@ emoji: 🏆
 colorFrom: blue
 colorTo: indigo
 sdk: gradio
-sdk_version: "5.0.0"
+sdk_version: 6.19.0
 python_version: "3.12"
 app_file: app.py
 pinned: true
-license: mit
+license: apache-2.0 
 ---
 
 # 🏆 India Runs AI Recruiter
