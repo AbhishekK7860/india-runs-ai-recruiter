@@ -278,6 +278,10 @@ The sandbox wraps `scripts/rank.py` exactly and exposes:
 
 **Note:** This sandbox demonstrates the offline ranking phase using precomputed production artifacts. It performs zero LLM, API, or network calls.
 
+**Results Preview:**
+To keep the sandbox fast, readable, and responsive, the interface displays only the Top 10 ranked candidates as a preview.
+The downloadable `submission.csv` and `submission.xlsx` contain the complete Top 100 ranked candidates exactly as required by the competition.
+
 ---
 
 ## 📊 Performance Metrics
